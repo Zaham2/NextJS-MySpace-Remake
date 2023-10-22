@@ -11,6 +11,16 @@ interface Post {
 //     params: { slug: string }
 // }
 
+export async function generateStaticParams(){
+    const posts: Post[] = await fetch('http://localhost:3000/api/content').then(
+    (res) => res.json()
+  );
+
+  return posts.map((post) => ({
+    slug: post.slug
+  }))
+}
+
 export default async function BlogPostPage(props: any){
 
     //remember that relative URLs wont work serverside!
