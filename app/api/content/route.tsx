@@ -1,6 +1,7 @@
 // You dont need to put the apis in the api folder,
 // but thats good convension to follow
 
+import { getServerSession } from "next-auth"
 import { NextResponse } from "next/server"
 
 const posts = [
@@ -22,5 +23,12 @@ const posts = [
 ]
 
 export async function GET() {
+
+    const session = await getServerSession();
+
+    // if(!session){
+    //     return something;
+    // }
+
     return NextResponse.json(posts)
 }
