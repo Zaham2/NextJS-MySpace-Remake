@@ -5,8 +5,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 export function SignInButton() {
-  const { data: session, status } = useSession();
-//   console.log(session, status);
+  const { data, status } = useSession();
 
   if (status === 'loading') {
     return <>...</>;
@@ -16,7 +15,7 @@ export function SignInButton() {
     return (
       <Link href={`/dashboard`}>
         <Image
-          src={session.user?.image ?? '/favicon.ico'} //this is just a fallback
+          src={data.user?.image ?? '/favicon.ico'} //this is just a fallback
           width={32}
           height={32}
           alt="Your Name"

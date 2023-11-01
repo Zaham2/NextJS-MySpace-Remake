@@ -24,7 +24,6 @@ export async function generateStaticParams(){
 export default async function BlogPostPage(props: any){
 
     //remember that relative URLs wont work serverside!
-    console.log(props)
     const posts: Post[] =
     await fetch('http://localhost:3000/api/content',{cache: 'no-store' })
     .then((res) => res.json())
